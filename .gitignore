@@ -176,3 +176,5 @@ dist
 
 # app-specific
 sqlite.db
+run.sh
+cron.log
