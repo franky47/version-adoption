@@ -1,6 +1,6 @@
 import { parseArgs } from 'util'
-import { db } from './db/db'
-import { packages } from './db/schema'
+import { db } from '../db/db'
+import { packages } from '../db/schema'
 
 const { positionals } = parseArgs({
   args: Bun.argv,

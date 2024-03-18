@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "fa51743c-1183-4909-a5bf-5e32ecf1896e",
+  "id": "5cc1ae9c-4e18-47ae-9ff2-d5014afb2f4f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "packages": {
@@ -53,8 +53,15 @@
           "notNull": true,
           "autoincrement": false
         },
-        "total": {
-          "name": "total",
+        "versions_count": {
+          "name": "versions_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "total_downloads": {
+          "name": "total_downloads",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,

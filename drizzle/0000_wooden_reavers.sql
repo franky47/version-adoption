@@ -7,6 +7,7 @@ CREATE TABLE `records` (
 	`package` text NOT NULL,
 	`created_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	`versions` text NOT NULL,
-	`total` integer NOT NULL,
+	`versions_count` integer NOT NULL,
+	`total_downloads` integer NOT NULL,
 	FOREIGN KEY (`package`) REFERENCES `packages`(`name`) ON UPDATE no action ON DELETE no action
 );

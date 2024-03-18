@@ -1,8 +1,8 @@
-import { db } from './db/db'
-import { records } from './db/schema'
-import { fetchNpmStats, getTotalDownloads, sortDownloads } from './npm'
+import { db } from '../db/db'
+import { records } from '../db/schema'
+import { fetchNpmStats, getTotalDownloads, sortDownloads } from '../npm'
 
-export async function run() {
+async function ingest() {
   const pkgs = await db.query.packages.findMany({
     columns: {
       name: true,
@@ -16,13 +16,16 @@ export async function run() {
 async function processPackage(pkg: string) {
   const tick = performance.now()
   const downloads = sortDownloads(await fetchNpmStats(pkg))
-  const total = getTotalDownloads(downloads)
+  const totalDownloads = getTotalDownloads(downloads)
   await db.insert(records).values({
     package: pkg,
     versions: downloads,
-    total,
+    versionsCount: Object.keys(downloads).length,
+    totalDownloads,
   })
   const tock = performance.now()
   const now = new Date().toISOString()
   console.log(`${now} Processed ${pkg} (${(tock - tick).toFixed(2)}ms)`)
 }
+
+ingest()
