@@ -5,6 +5,7 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
+    "add-pkg": "bun run ./src/add.ts",
     "migrate": "bun run ./src/db/migrate.ts",
     "start": "bun run ./src/index.ts"
   },
